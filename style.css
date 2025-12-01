@@ -1,0 +1,1458 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/* -------------------------------------------------------------------------
+   Theme variables (default = dark theme)
+   - All color values used across this stylesheet are defined below.
+   - Comments indicate where each variable is used.
+   To enable the light theme, add the class `theme-white` to the <body>.
+------------------------------------------------------------------------- */
+:root {
+    /* Page / surfaces */
+    --background: #000000;            /* Used for main page backgrounds (sections like #Hero, #page2, #page3, #page4), footer background, and large dark surfaces */
+    --cardbg:#0D0E14;
+    --surface: #07070A;               /* Dark surface for cards and small panels (e.g., .price-card, .exp-upp-card1 backgrounds) */
+    --nav-bg: #000000;                /* nav background (nav) */
+
+    /* Text colors */
+    --text-primary: #FFFFFF;          /* Primary text color (body text, headings) */
+    --text-muted: #A4A7AE;            /* Muted text used for secondary headings and descriptions (.p3-h2, .card*-h2, etc.) */
+    --text-secondary: rgb(212, 211, 211); /* Secondary text used on some buttons and labels */
+    --muted-2: #7A7B85;               /* Smaller muted text (nav-text, footer option text) */
+
+    /* Accent / brand */
+    --accent: #96EA63;                /* Primary accent green used for buttons, icons, highlights (.icon-color, .ll-btn, etc.) */
+    --accent-light: #A6CB90;          /* Lighter accent used in gradients (uc-border2, etc.) */
+    --accent-dark: #27312a;           /* Dark green used in gradients and overlays (invite-user button gradient) */
+    --accent-strong: #1C2C13;         /* Strong darker accent (small badges/buttons) */
+
+    /* Borders and UI dividers */
+    --border-muted: #515153;          /* Subtle borders for inputs, buttons, cards (.pc-container button, .f-lower button) */
+    --border-weak: #525353;           /* Alternate weak border (contact-sales border-color) */
+    --card-border: #212429;           /* Card outline and thin borders (.exp-low-card, card buttons) */
+    --outline-dark: #1A1C29;          /* Deeper outline used for small button borders (#line1/#line2/#line3 buttons) */
+
+    /* Background accents & gradients */
+    --uc-bg: rgb(94,94,94);           /* used for .uc-border1 background-color */
+    --gradient-accent-stop: rgba(39, 58, 27, 0.1); /* used in gradients where an rgba overlay is needed */
+    --lower-gradient-start: #96EA63;  /* used in .lower-border gradient start */
+    --lower-gradient-mid: #14151F;    /* middle stop in .lower-border */
+    --lower-gradient-end: #0D0E14;    /* end stop in .lower-border */
+
+    /* Toggles */
+    --toggle-border: #393939;         /* toggle-switch border */
+    --toggle-bg-active: #FFFFFF;      /* active toggle background */
+    --toggle-text: #7A7B85;           /* toggle text default */
+    --toggle-text-active: #222222;    /* toggle active text color */
+
+    /* Inputs and forms */
+    --input-bg: #14151F;              /* form input background */
+    --input-text: #FFFFFF;            /* input text color */
+
+    /* Shadows / glows */
+    --shadow-overlay: rgba(0,0,0,0.05); /* used for small box-shadows */
+    --card-glow-1: #2b4916;           /* used by .card-glow box-shadow on hover */
+    --card-glow-2: #30362b;           /* used by .card-glow2 box-shadow on hover */
+
+    /* Footer */
+    --footer-bg: #0D0E14;             /* footer background */
+    --footer-text-muted: #7A7B85;     /* footer secondary text */
+    --footer-border: #4D4F5C;         /* footer button border */
+
+    /* Icons */
+    --icon-accent: #96EA63;           /* social / highlight icons (.icon-color, .f-lower i) */
+
+    /* Misc */
+    --mouse-follower: #FFFFFF;        /* small mouse follower background */
+    /* Button text color for accent buttons */
+    --button-text: #000000;           /* text color used for buttons with green background (e.g., .singin, .h-singin, .ll-btn) */
+    /* Toggle circle color (the round knob) - dark theme default */
+    --theme-toggle-circle: #000000;  
+    --toogle-bg:white /* used for .theme-toggle .toggle-circle */
+}
+
+/* Light theme overrides. Add `.theme-white` to <body> to enable.
+   Each variable below mirrors the :root names and notes where used. */
+.theme-white {
+    /* Page / surfaces */
+    --background: #FFFFFF;            /* page backgrounds become white */
+     --cardbg:white;
+    --surface: #FFFFFF;               /* card surfaces switch to white */
+    --nav-bg: #FFFFFF;                /* nav background */
+
+    /* Text colors */
+    --text-primary: #0D0E14;          /* primary text becomes dark on light bg */
+    --text-muted: #4B4B4B;            /* muted text on light theme */
+    --text-secondary: #2A2A2A;        /* secondary text when needed */
+    --muted-2: #000000;              /* nav and footer small text */
+
+    /* Accent / brand */
+    --accent: #96EA63;                /* green accent adapted for light backgrounds */
+    --accent-light: #444444;          /* lighter accent stop */
+    --accent-dark: #d6ead1;           /* subtle darker accent for gradients */
+    --accent-strong: #96EA63;         /* strong accent for buttons */
+
+    /* Borders and UI dividers */
+    --border-muted: #D1D1D1;          /* lighter border on white surfaces */
+    --border-weak: #acabab;           /* alternate weak border */
+    --card-border: #bbbaba;           /* card outline on white */
+    --outline-dark: #D8D8D8;          /* small outlines */
+
+    /* Background accents & gradients */
+    --uc-bg: rgb(151, 150, 150);        /* light variant for uc-border1 */
+    --gradient-accent-stop: rgba(20, 60, 20, 0.06); /* subtle overlay for light gradients */
+    --lower-gradient-start: #96EA63;  /* lower border start for light theme */
+    --lower-gradient-mid: #14151F;    /* mid stop */
+    --lower-gradient-end: #14151F;    /* end stop */
+
+    /* Toggles */
+    --toggle-border: #D0D0D0;
+    --toggle-bg-active: #0D0E14;
+    --toggle-text: #606060;
+    --toggle-text-active: #FFFFFF;
+
+    /* Inputs and forms */
+    --input-bg: #F5F6F7;
+    --input-text: #0D0E14;
+
+    /* Shadows / glows */
+    --shadow-overlay: rgba(13,14,20,0.06);
+    --card-glow-1: #CDECC3;
+    --card-glow-2: #D8E7D6;
+
+    /* Footer */
+    --footer-bg: #f0f0f0;
+    --footer-text-muted: #606060;
+    --footer-border: #CFCFCF;
+
+    /* Icons */
+    --icon-accent: #1C7A22;
+
+    /* Misc */
+    --mouse-follower: #ffffff;
+    /* Toggle circle color (the round knob) - light theme default */
+    --theme-toggle-circle: #ffffff; 
+    --toogle-bg:black;  /* used for .theme-toggle .toggle-circle in light theme */
+}
+
+/* ------------------------------------------------------------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'Blance Groove';
+    src: url('Font/Blance groove/BlancGroove-Regular.otf') format('opentype');
+    src: url('Font/Blance groove/BlancGroove-ExtraBold.otf') format('opentype');
+    /* font-weight: 400;
+    font-style: normal;
+    font-display: swap; */
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('Fonts/Manrope/Manrope-Regular.woff2') format('woff2');
+    src: url('Font\Manrope\static\Manrope-Light.ttf') format('opentype');
+    /* font-weight: 400; */
+    font-style: normal;
+    /* font-display: swap; */
+}
+
+/* BODY -------------------------------------------------------------------------------------------------------------------- */
+
+body {
+    font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    color: var(--text-primary);
+    background: var(--background);
+}
+
+h1 {
+    font-family: 'Blance Groove', sans-serif;
+}
+
+h2 h3 {
+    font-family: 'Manrope', sans-serif;
+}
+
+/* MOUSE FOLLOWER ---------------------------------------------------------------------------------------- */
+
+#mouse-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+
+    /* This creates the color inversion effect */
+    background-color: var(--mouse-follower);
+    mix-blend-mode: difference;
+
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    pointer-events: none; /* Allows you to click through the follower */
+    transition: transform 0.2s ease-out; /* Smooth scaling transition */
+}
+
+/* EFFECTS ------------------------------------------------------------------------------------------------ */
+
+
+/* BUTTONS ----------------------------------- */
+
+.button-scale {
+    /* ensure transform can be applied and animated reliably */
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+    will-change: transform;
+}
+
+.button-scale:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* CARD GLOW EFFECT ----------------------------------- */
+
+
+.card-glow {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card-glow:hover {
+  transform: scale(1.02); 
+    box-shadow: 0 0 30px var(--card-glow-1);
+}
+
+.card-glow2 {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card-glow2:hover {
+  transform: scale(1.02); 
+    box-shadow: 0 0 30px var(--card-glow-2);
+}
+
+/* Hero --------------------------------------------------------------------------------------------------------------------- */
+
+#Hero {
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--background);
+}
+
+#H-container {
+    height: min-content;
+    width: 100%;
+}
+
+/* NAV ---------------------------------------------------- */
+
+nav {
+    background-color: var(--nav-bg);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1vh 10vw;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.nav-logo img {
+    height: 4vh;
+}
+.nav-logo{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.nav-logo h2{
+    font-size: 27px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.nav-text {
+    display: flex;
+    gap: 5vw;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.nav-text h3 {
+    font-weight: 400;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* space between login / signup / toggle */
+}
+
+.login {
+    border-style: none;
+    background-color: transparent;
+    padding: 16px 30px;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.singin {
+    border-style: none;
+    background-color: var(--accent);
+    padding: 11px 32px;
+    color: var(--button-text);
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.globe {
+    border-style: none;
+    background-color: transparent;
+    padding: 16px 30px;
+    color: var(--text-primary);
+    font-size: 22px;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 68px; /* match your globe button width */
+  height: 35px; /* match height */
+  border-radius: 24px;
+    border: 1px solid var(--toggle-border);
+  cursor: pointer;
+    background-color: var(--toogle-bg); /* use navbar background so it contrasts with border */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.theme-toggle .toggle-circle {
+  position: absolute;
+  top: 3.5px;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+    background-color: var(--theme-toggle-circle);
+  transition: left 0.3s ease, background-color 0.3s ease;
+  left: 5px; /* start on the left (moon) */
+  z-index: 2;
+}
+
+/* Position icons */
+.theme-toggle .icon {
+  width: 20px;
+  height: 20px;
+  transition: filter 0.3s ease;
+  z-index: 1;
+  margin-right: 5px;
+}
+
+/* When toggled to light theme */
+.theme-toggle.light-theme {
+    background-color: var(--toogle-bg);
+}
+
+.theme-toggle.light-theme .toggle-circle {
+    left: 34px; /* Move toggle circle to right (sun) */
+    background-color: var(--theme-toggle-circle);
+}
+
+.theme-toggle.light-theme .moon-icon {
+  filter: invert(1); /* invert moon icon */
+}
+
+.theme-toggle.light-theme .sun-icon {
+  filter: invert(0); /* normal sun icon */
+}
+
+.theme-toggle .moon-icon{
+    font-size: 19px;
+    color: var(--text-primary);
+}
+.theme-toggle .sun-icon{
+    font-size: 19px;
+    color: var(--theme-toggle-circle);
+}
+
+
+
+
+/* GLOW ---------------------------------------------------- */
+
+.glow img {
+    height: auto;
+    width: 100%;
+    position: absolute;
+    /* allow overflow so inner elements (like button rows) can extend outside */
+    overflow: visible;
+    top: -40px;
+    z-index: 0;
+}
+
+/* MAIN HEADING -------------------------------------------- */
+
+#h-content {
+    height: min-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+    gap: 2vh;
+}
+
+#h-content h1 {
+    position: relative;
+    font-family: 'Blance groove' sans-serif;
+    font-size: 5.5vw;
+    font-weight: 1000;
+    width: 55vw;
+    text-align: center;
+}
+
+#h-content h2 {
+    font-weight: 100;
+    font-size: 1.5vw;
+}
+
+.h-content-btn {
+    margin-top: 3.2vh;
+}
+
+.h-singin {
+    border-style: none;
+    background-color: var(--accent);
+    padding: 15px 25px;
+    color: var(--button-text);
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.contact-sales {
+    background-color: transparent;
+    padding: 15px 25px;
+    color: var(--text-primary);
+    font-size: 14px;
+    border-radius: 8px;
+    border-color: var(--border-weak);
+    border-style: solid;
+    border-width: 0.5px;
+    margin-left: 10px;
+}
+
+/* PERKS ---------------------------------------------------- */
+
+#perks {
+    height: min-content;
+    width: 100%;
+    /* display: flex;
+    justify-content: center; */
+    margin-top: 15vh;
+}
+
+#p-container {
+    height: min-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    padding-bottom: 5vh;
+}
+
+.upper-perk {
+    height: min-content;
+    width: min-content;
+    display: flex;
+    justify-content: center;
+    gap: 10vh;
+
+}
+
+.lower-perk {
+    height: min-content;
+    width: min-content;
+    display: flex;
+    justify-content: center;
+    gap: 10vh;
+}
+
+
+/* indivisual perk ------------- */
+
+.p-block h2 {
+    font-size: 1.5vh;
+    font-weight: 100;
+    width: 30vh;
+    margin-top: 1vh;
+}
+
+.p-heading {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+
+}
+
+.p-heading img {
+    width: auto;
+    height: 4vh;
+}
+
+.p-heading h1 {
+    font-size: 1.7vh;
+    font-weight: 100;
+}
+
+/* PAGE 2 ------------------------------------------------------------------------------------------------------------------- */
+
+#page2 {
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--background);
+    padding-top: 10vh;
+    padding-bottom: 12vh;
+}
+
+#p2-container {
+    height: 100%;
+    width: 100%;
+}
+
+#logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vh;
+}
+
+#logos h2 {
+    font-weight: 500;
+    font-size: 2.3vh;
+}
+
+.logo {
+    display: flex;
+    gap: 2vw;
+}
+
+.logo img {
+    width: auto;
+    height: 4.5vh;
+}
+
+/* PRICING ---------------------------------------------------- */
+
+#pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15vh;
+    gap: 6vh;
+}
+
+#pricing>h2 {
+    font-size: 4.5vh;
+    font-weight: 500;
+}
+
+.pricing-btn h2 {
+    font-weight: 400;
+    font-size: 2.5vh;
+
+}
+
+.pricing-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    align-items: center;
+}
+
+/* TOGGLE BUTTON ---------------------------------------------------- */
+
+.toggle-switch {
+    display: flex;
+    position: relative;
+    background: transparent;
+    border-radius: 2em;
+    padding: 0px 21px;
+    width: 254px;
+    height: 47px;
+    align-items: center;
+    border: 2px solid var(--toggle-border);
+    gap: 24px;
+}
+
+.toggle-switch button {
+
+    font-size: 17.8px;
+    color: var(--muted-2);
+}
+
+.toggle-option {
+    /* flex: 1; */
+    background: transparent;
+    border: none;
+    padding: 0px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    border-radius: 2em;
+    z-index: 2;
+    cursor: pointer;
+    transition: color 0.3s;
+    height: 36px;
+
+}
+
+.toggle-option.active {
+    color: var(--toggle-text-active);
+    font-weight: 600;
+}
+
+.toggle-bg {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    justify-content: center;
+    height: 34px;
+    width: 63%;
+    background: var(--toggle-bg-active);
+    border-radius: 2em;
+    z-index: 1;
+    box-shadow: 0 4px 16px var(--shadow-overlay);
+    transition: left 0.3s;
+}
+
+.toggle-switch .toggle-option:nth-child(2).active~.toggle-bg {
+    left: 35%;
+}
+
+.toggle-switch .toggle-option:nth-child(1).active~.toggle-bg {
+    left: 0;
+}
+
+/* PRICES ---------------------------------------------------- */
+
+#price-container {
+    height: min-content;
+    width: 74vw;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    padding-bottom: 10vh;
+
+}
+
+.price-upper {
+    display: flex;
+    gap: 2vw;
+}
+
+.uc-border1 {
+    height: 50vh;
+    width: 100%;
+    padding: 0.7px;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    border-radius: 12px;
+    background-color: var(--uc-bg);
+}
+
+.uc-border2 {
+    height: 50vh;
+    width: 100%;
+    padding: 0.8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: linear-gradient(184deg,
+        var(--accent-light) 0%,
+        var(--gradient-accent-stop) 100%);
+}
+
+.price-card {
+    background-color: var(--surface);
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* PRICE CONTAINE 1 ------------- */
+
+.pc-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.7vh;
+}
+
+.pc-container>h2 {
+    font-size: 3vh;
+    font-weight: 400;
+}
+
+.price {
+    display: flex;
+}
+
+.price>h2 {
+    font-weight: 400;
+    font-size: 4.5vh;
+}
+
+.essential h2 {
+    font-size: 2.4vh;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.pc-container button {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: transparent;
+    border: solid 0.5px var(--border-muted);
+    color: var(--text-secondary);
+}
+
+.card-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    margin-top: 7vh;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.feature h2 {
+    font-weight: 100;
+    font-size: 2vh;
+}
+
+.feature i {
+    font-size: 3.5vh;
+}
+
+/* PRICE CONTAINE 2 ------------- */
+
+.pc-container2 {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.7vh;
+}
+
+.price-card img {
+    width: auto;
+    height: 20vh;
+    position: absolute;
+    z-index: 1;
+
+}
+
+.pro-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pro-heading h2 {
+    font-size: 3vh;
+    font-weight: 400;
+}
+
+.pro-heading button {
+    background-color: var(--accent-strong);
+    border-radius: 8px;
+    padding: 1px 15px;
+    color: var(--accent-light);
+    border: none;
+}
+
+.pc-container2>h2 {
+    font-size: 3vh;
+    font-weight: 400;
+}
+
+.price {
+    display: flex;
+}
+
+.price>h2 {
+    font-weight: 400;
+    font-size: 4.5vh;
+}
+
+.essential h2 {
+    font-size: 2.4vh;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.pc-container2>button {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--accent);
+    border: solid 0.5px var(--border-muted);
+    color: var(--button-text);
+}
+
+.card-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    margin-top: 7vh;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.feature h2 {
+    font-weight: 100;
+    font-size: 2vh;
+}
+
+.feature i {
+    font-size: 3.5vh;
+}
+
+/* LOWER BORDER ---------------------------------------------------- */
+
+.lower-border {
+    height: 18vh;
+    width: 100%;
+    border-radius: 12px;
+    background: linear-gradient(84deg,
+        var(--lower-gradient-start) 0%,
+        var(--lower-gradient-mid) 33%,
+        var(--lower-gradient-start) 67%,
+        var(--lower-gradient-end) 100%);
+    padding: 0.8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.get-started {
+    width: 100%;
+    height: 100%;
+    background-color: var(--cardbg);
+    border-radius: 12px;
+    /* overflow: hidden; */
+}
+
+.p-glow img {
+    position: absolute;
+    height: 18vh;
+    width: auto;
+    left: 41%;
+}
+
+.ll-container {
+    height: 100%;
+    width: 100%;
+    padding: 3vh 5vh;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: red; */
+    align-items: center;
+}
+
+.lower-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    /* justify-content: space-around;  */
+    align-items: spa;
+}
+
+.lower-left h1 {
+    font-size: 3.7vh;
+}
+
+.lower-left h2 {
+    font-weight: 300;
+    font-size: 2.2vh;
+}
+
+.ll-btn button {
+    background-color: var(--accent);
+    border: none;
+    color: var(--button-text);
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 2vh;
+}
+
+/* PAGE 3 ---------------------------------------------------------------------------------------------------------------- */
+
+#page3 {
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--background);
+    padding: 0vh 12.5vw;
+}
+
+.p3-container {
+    height: min-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    align-items: center;
+}
+
+.p3-container>h2 {
+    font-size: 5vh;
+    font-weight: 500;
+}
+
+.p3-h2 h2 {
+    font-weight: 400;
+    font-size: 2.2vh;
+    color: var(--text-muted);
+}
+
+/* EXPLOR GRID ---------------------------------------------------- */
+
+.explore-container {
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+    width: 100%;
+    gap: 3.6vh;
+    overflow: hidden;
+    padding: 2.5vh;
+}
+
+.exp-upper {
+    display: flex;
+    gap: 3.2vh;
+}
+
+/* UPPER CARD 1 ------------------------- */
+
+.exp-upp-card-border1 {
+    width: 48.5%;
+    height: 39vh;
+    background: linear-gradient(150deg,
+            var(--accent) 0%,
+            var(--accent-dark) 100%);
+    border-radius: 12px;
+    padding: 0.7px;
+}
+
+.exp-upp-card1 {
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background-image: url('Images/bottom2.png');
+    background-color: var(--cardbg);
+    background-repeat: no-repeat;
+    background-position: 100% 22%;
+    background-size: contain;
+}
+
+#card1 {
+    color: var(--text-primary);
+    overflow: hidden;
+    padding: 2vh;
+    
+}
+#card1>h2{
+    font-weight: 500;
+    font-size: 2.7vh;
+}
+.card1-h2 h2{
+    font-weight: 400;
+    font-size: 2.2vh;
+    color: var(--text-muted);
+    margin-top: 1.9vh;
+}
+
+/*  line 1 -------------------- */
+
+#line1{
+    display: flex;
+    gap: 1vw;
+    /* position: relative; */
+    white-space: nowrap;    
+    margin-top: 5.5vh;
+}
+#line1 button{
+    background-color: var(--surface);
+    border: solid 0.5px var(--outline-dark);
+    color: var(--text-primary);
+    /* width: 150px; */
+    border-radius: 8px;
+    padding: 0.7vh 2vh;
+    color: var(--text-secondary);
+}
+#line1 button i{
+    font-size: 2.2vh;
+}
+
+/* LINE 2 --------------------- */
+
+#line2{
+    display: flex;
+    gap: 1vw;
+    /* position: relative; */
+    white-space: nowrap;    
+    margin-top: 2.5vh;
+    margin-left: 2vw;
+}
+#line2 button{
+    background-color: var(--surface);
+    border: solid 0.5px var(--outline-dark);
+    color: var(--text-primary);
+    /* width: 150px; */
+    border-radius: 8px;
+    padding: 0.7vh 2vh;
+    color: var(--text-secondary);
+}
+#line2 button i{
+    font-size: 2.2vh;
+}
+
+/* LINE 3 --------------------- */
+
+#line3{
+    display: flex;
+    gap: 1vw;
+    /* position: relative; */
+    white-space: nowrap;    
+    margin-top: 2.5vh;
+}
+#line3 button{
+    background-color: var(--surface);
+    border: solid 0.5px var(--outline-dark);
+    color: var(--text-primary);
+    /* width: 150px; */
+    border-radius: 8px;
+    padding: 0.7vh 2vh;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+#line3 button i{
+    font-size: 2.2vh;
+}
+
+.icon-color{
+    color: var(--icon-accent);
+}
+
+/* UPPER CARD 2 -------------------------- */
+
+.exp-upp-card-border2 {
+    width:48.9%;
+    height: 39vh;
+    /* background: linear-gradient(120deg,
+            #96EA63 0%,
+            #1E2F14 100%); */
+    background-color: var(--card-border);
+    border-radius: 12px;
+    padding: 0.7px;
+}
+
+.exp-upp-card2 {
+   height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background-image: url('Images/Text input.png');
+    background-color: var(--cardbg);
+    background-repeat: no-repeat;
+    background-position: 100% ;
+    background-size: contain;
+}
+
+#card2 {
+    color: var(--text-primary);
+    overflow: hidden;
+    padding: 2vh;
+    
+}
+#card2>h2{
+    font-weight: 500;
+    font-size: 2.7vh;
+}
+.card2-h2 h2{
+    font-weight: 400;
+    font-size: 2.2vh;
+    color: var(--text-muted);
+    margin-top: 1.9vh;
+}
+.invite-user{
+    margin-top: 4vh;
+    /* make this the positioning context for the button */
+    position: relative;
+    display: inline-block;
+}
+.invite-user img{
+    display: block;
+    width: auto;
+    height: 15.7vh;
+    position: relative;
+    left: -3%;
+}
+.invite-user button{
+    position: absolute;
+    left: 42%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(1deg, var(--accent-dark) -50%, var(--surface) 70%, var(--accent-dark) 100%);
+    border: solid 0.5px var(--footer-border);
+    color: var(--text-primary);
+    border-radius: 50px;
+    padding: 2.5vh 3vh;
+    font-weight: 500;
+    font-size: 2vh;
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* LOWER ---------------------------------------------------- */
+
+.exp-lower {
+    display: flex;
+    gap: 3.2vh;
+    padding-bottom: 5vh;
+}
+
+.exp-low-card {
+    height: 47vh;
+    width: 50vh;
+    background-image: url('Images/Text input2.png');
+    background-color: var(--cardbg);
+    background-repeat: no-repeat;
+    background-position: 100% 0%;
+    background-size: contain;
+    border-radius: 12px;
+    border: solid 0.5px var(--card-border);
+    overflow: hidden;
+}
+
+.exp-low-card img {
+    width: auto;
+    height: 36.23vh;
+    position: relative;
+}
+
+/* CARD 1 ---------------------------------- */
+
+.lower-card1 {
+    color: var(--text-primary);
+    overflow: hidden;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+.lower-card1>h2{
+    font-weight: 500;
+    font-size: 2.7vh;
+}
+.lower-card1-h2 h2{
+    font-weight: 400;
+    font-size: 2vh;
+    color: var(--text-muted);
+    margin-top: 1.2vh;
+}
+.lower-card1 img{
+    width: auto;
+    height: 27vh;
+    margin-top: 3vh;
+}
+
+/* CARD 2 ----------------------------------- */
+
+.lower-card2 {
+    color: var(--text-primary);
+    overflow: hidden;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7vh;
+}
+
+.lower-card2>h2{
+    font-weight: 500;
+    font-size: 2.7vh;
+}
+.lower-card2-h2 h2{
+    font-weight: 400;
+    font-size: 2vh;
+    color: var(--text-muted);
+    margin-top: 1.2vh;
+}
+.lower-card2 img{
+    width: auto;
+    height: 30vh;
+    margin-top: 3vh;
+}
+
+/* CARD 3 ---------------------------------- */
+
+.lower-card3 {
+    color: var(--text-primary);
+    overflow: hidden;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7vh;
+}
+
+.lower-card3>h2{
+    font-weight: 500;
+    font-size: 2.7vh;
+}
+.lower-card3-h2 h2{
+    font-weight: 400;
+    font-size: 2vh;
+    color: var(--text-muted);
+    margin-top: 1.2vh;
+}
+.card3-btn-container{
+    /* background-color: pink; */
+    padding: 0vh 2vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    margin-top: 3vh;
+}
+
+/* LINE 1 -------------------------- */
+
+.card3-l1{
+    display: flex;
+    justify-content: space-between
+}
+.card3-l1 button{
+    background-color: transparent;
+    color: var(--text-primary);
+    border: solid 0.5px var(--card-border);
+    border-radius: 50px;
+    padding: 1.5vh 3vh;
+}
+
+/* LINE 2 -------------------------- */
+
+.card3-l2{
+    display: flex;
+    justify-content: space-between
+}
+.card3-l2 button{
+    background-color: transparent;
+    color: var(--text-primary);
+    border: solid 0.5px var(--card-border);
+    border-radius: 50px;
+    padding: 1.5vh 3vh;
+}
+
+/* LINE 3 -------------------------- */
+
+.card3-l3{
+    display: flex;
+    justify-content: space-between
+}
+.card3-l3 button{
+    background-color: transparent;
+    color: var(--text-primary);
+    border: solid 0.5px var(--card-border);
+    border-radius: 50px;
+    padding: 1.5vh 3vh;
+}
+
+/* LINE 4 -------------------------- */
+
+.card3-l4{
+    display: flex;
+    justify-content: space-between
+}
+.card3-l4 button{
+    background-color: transparent;
+    color: var(--text-primary);
+    border: solid 0.5px var(--card-border);
+    border-radius: 50px;
+    padding: 1.5vh 3vh;
+}
+
+/* PAGE 4 ---------------------------------------------------------------------------------------------------------- */
+
+#page4 {
+    min-height: 90vh;
+    width: 100%;
+    background-color: var(--background);
+    padding: 0vh 6vw;
+    
+}
+
+.p4-container {
+    height: min-content;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20vh;
+}
+
+.get-in-touch{
+    height: 100%;
+    width: 100%;
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7vh;
+}
+.get-in-touch>h2{
+    font-weight: 500;
+    font-size: 5.2vh;
+}
+.get-in-touch-h2 h2{
+    font-weight: 300;
+    font-size: 2.5vh;
+    color: var(--text-muted);
+}
+
+/* FORM ---------------------------------------------------- */
+
+.form{
+    height: 100%;
+    width: 100%;
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+}
+
+.form h2{
+    font-weight: 400;
+    font-size: 2vh;
+}
+.name input {
+    background-color: var(--input-bg);
+    border: none;
+    font-size: 1.7vh;
+    width: 100%;
+    padding: 1.8vh;
+    margin-top: 1vh;
+    border-radius: 8px;
+    color: var(--input-text);
+}
+.E-mail input {
+    background-color: var(--input-bg);
+    border: none;
+    font-size: 1.7vh;
+    width: 100%;
+    padding: 1.8vh;
+    margin-top: 1vh;
+    border-radius: 8px;
+    color: var(--input-text);
+}
+.massage input {
+    background-color: var(--input-bg);
+    border: none;
+    font-size: 1.6vh;
+    width: 100%;
+    height: 20vh;
+    padding: 1.8vh;
+    margin-top: 1vh;
+    border-radius: 8px;
+    color: var(--input-text);
+}
+
+.form button{
+    padding: 1.7vh;
+    border-radius: 12px;
+    font-size: 2vh;
+    border: none;
+}
+
+/* FOOTER ------------------------------------------------------------------------------------------------------------------ */
+
+footer{
+    height: 34vh;
+    width: 100%;
+    background-color: var(--footer-bg);
+    padding: 8vh 20vh;
+}
+#f-container{
+    display: flex;
+    flex-direction: column;
+    gap: 4.5vh;
+    justify-content: center;
+}
+.f-upper{
+    display: flex;
+    justify-content: space-between;
+}
+.f-upper img{
+    width: auto;
+    height: 4vh;
+}
+.f-options{
+    display: flex;
+    gap: 6vh;
+}
+.f-options h2{
+    font-weight: 400;
+    font-size: 2vh;
+    color: var(--footer-text-muted);
+}
+
+#f-container>img{
+   height: 1.5px;
+   width: auto;
+}
+
+.f-lower{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.f-lower h2{
+    font-weight: 400;
+    font-size: 1.7vh;
+    color: var(--footer-text-muted);
+}
+.f-lower button{
+    border: solid 0.5px var(--footer-border);
+    background-color: transparent;
+    color: var(--text-primary);
+    border-radius: 50px;
+    padding: 1vh 2vh;
+    
+}
+.f-lower button i{
+    color: var(--icon-accent);
+    font-size: 1.2vh;
+    margin-right: 0.7vh;
+}
+.social-icons{
+    display: flex;
+    font-size: 2.7vh;
+    gap: 2.5vh;
+}
